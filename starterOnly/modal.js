@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBody = document.querySelector('.modal-body')
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector('form')
 const close = document.querySelector('.close')
@@ -73,9 +74,8 @@ function saveFormData() {
   localStorage.setItem("data", JSON.stringify(data))
 }
 
-// show valid data 
+// show valid data
 
-// show the value
 const data = JSON.parse(localStorage.getItem("data"))
 console.log(data)
 if (data != null) {
@@ -187,11 +187,28 @@ function isValidConditionsOfUse() {
   return false
 }
 
+function successfulRegistration() {
+  localStorage.removeItem("data")
+  form.style.display = "none"
+  const p = document.createElement('p')
+  p.innerText = "Merci pour votre inscription"
+  p.style.padding = "75% 25%"
+  p.style.textAlign = "center"
+  modalBody.appendChild(p)
+  const button = document.createElement('button')
+  button.innerText = "Fermer"
+  button.classList.add("btn-submit")
+  button.addEventListener('click', function() {
+    modalbg.style.display = "none";
+  })
+  modalBody.appendChild(button)
+}
+
 form.addEventListener('submit', function (e) {
   e.preventDefault()
   saveFormData()
   const isValid = [isValidFirstName(), isValidName(), isValidEmail(), isValidBirthdate(), isValidQuantity(), isValidCheckBox(), isValidConditionsOfUse()].every(Boolean);
   if (isValid) {
-    localStorage.removeItem("data")
+    successfulRegistration()
   }
 })
