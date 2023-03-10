@@ -77,7 +77,6 @@ function saveFormData() {
 // show valid data
 
 const data = JSON.parse(localStorage.getItem("data"))
-console.log(data)
 if (data != null) {
     firstname.value = data.first
     name.value = data.last
