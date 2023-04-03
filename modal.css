@@ -532,10 +532,6 @@ footer {
   .hero-headline {
     font-size: 2.5rem;
   }
-  .topnav {
-    padding: 20px;
-    overflow: unset;
-  }
   .main-navbar {
     position: absolute;
     right: 0;
@@ -545,9 +541,10 @@ footer {
   }
 } 
 
-@media screen and (max-width: 375px) {
-  .header-logo img {
-    width: 100px;
+@media screen and (max-width: 768px) {
+  .topnav {
+    padding: 20px;
+    overflow: unset;
   }
   .topnav a.icon {
     color: #FF001B;
@@ -627,4 +624,10 @@ footer {
     background-color: white
     ;
   }
+}
+
+@media screen and (max-width: 375px) {
+    .header-logo img {
+      width: 100px;
+    }
 }
